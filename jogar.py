@@ -5,7 +5,6 @@ from calculos.pesos import calcular_numero_pesos
 from sorteios.sortear import sortear_numeros
 from modelo.modelo import criar_modelo
 from dados.dados import carregar_dados
-
 from pandas import DataFrame
 
 
