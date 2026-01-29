@@ -22,7 +22,7 @@ Jogando na Lotofácil utilizando rede neural.
 
 # PRINCIPAIS INFORMAÇÕES DO JOGO  
 
-Informações obtidas no site da Caixa Econômica Federal, acessado em: 08/07/2020.  
+Informações obtidas no site da Caixa Econômica Federal, acessado em: 30/01/2026.  
 
 **Observação**: Para maiores informações acessar o site da [LOTOFÁCIL](http://loterias.caixa.gov.br/wps/portal/loterias/landing/lotofacil/).   
   
@@ -31,31 +31,38 @@ A Lotofácil é, como o próprio nome diz, fácil de apostar e principalmente de
 
 ### Apostas  
 
-A aposta mínima, de 15 números, custa R$ 2,50.
+A aposta mínima, de 15 números, custa R$ 3,50.
 
 ### Sorteios  
 
-Os sorteios são realizados às segundas, quartas e sextas-feiras, sempre às 20h.
+Os sorteios são realizados de segunda à sábado, a partir das 20h.
 
 ### Premiação  
 
-O prêmio bruto corresponde a 43,35% da arrecadação. Dessa porcentagem, será deduzido o pagamento dos prêmios com valores fixos:
+O prêmio bruto corresponde a 43,79% da arrecadação. Dessa porcentagem, será deduzido o pagamento dos prêmios com valores fixos:
 
-- R$ 5,00 para as apostas com 11 prognósticos certos entre os 15 sorteados;
-- R$ 10,00 para as apostas com 12 prognósticos certos entre os 15 sorteados;
-- R$ 25,00 para as apostas com 13 prognósticos certos entre os 15 sorteados.
+- R$ 7,00 para as apostas com 11 prognósticos certos entre os 15 sorteados;
+- R$ 14,00 para as apostas com 12 prognósticos certos entre os 15 sorteados;
+- R$ 35,00 para as apostas com 13 prognósticos certos entre os 15 sorteados.
 
 Após a apuração dos ganhadores dos prêmios com valores fixos, o valor restante do total destinado à premiação será distribuído para as demais faixas de prêmios nos seguintes percentuais:
 
-- 65% entre os acertadores de 15 números;
-- 20% entre os acertadores de 14 números entre os 15 sorteados.
+- 62% entre os acertadores de 15 números;
+- 13% entre os acertadores de 14 números entre os 15 sorteados;
+- 10% ficam acumulados e são distribuídos aos acertadores dos 15 números nos concursos de final 0;
+- 15% ficam acumulados para a primeira faixa (15 acertos) do concurso especial realizado em setembro de cada ano.
+
+Nos concursos de final 0, após a apuração dos ganhadores dos prêmios com valores fixos, o valor restante do total destinado à premiação será distribuído para as demais faixas de prêmios nos seguintes percentuais:
+
+- 72% entre os acertadores de 15 números;
+- 13% entre os acertadores de 14 números;
 - 15% ficam acumulados para a primeira faixa (15 acertos) do concurso especial realizado em setembro de cada ano.
 
 Os prêmios prescrevem 90 dias após a data do sorteio. Após esse prazo, os valores são repassados ao Tesouro Nacional para aplicação no FIES - Fundo de Financiamento ao Estudante do Ensino Superior.
 
 ### Recebimento de prêmios  
 
-Você pode receber seu prêmio em qualquer casa lotérica credenciada ou nas agências da Caixa. Caso o prêmio líquido seja superior a R$ 1.332,78 (bruto de R$ 1.903,98) o pagamento pode ser realizado somente nas agências da Caixa. Valores iguais ou acima de R$ 10.000,00 são pagos após 2 dias de sua apresentação na agência da Caixa.
+Você pode receber seu prêmio em qualquer casa lotérica credenciada ou nas agências da CAIXA. Caso o prêmio bruto seja superior a R$ 2.428,80, o pagamento pode ser realizado somente nas agências da CAIXA, mediante apresentação de comprovante de identidade original com CPF e recibo de aposta original e premiado. Valores iguais ou acima de R$ 10.000,00 são pagos no prazo mínimo de dois dias úteis a partir de sua apresentação em Agência da CAIXA.
 
 ### Acumulação  
 
@@ -65,10 +72,12 @@ Não havendo ganhador em qualquer faixa de premiação, o valor acumula para o c
 
 |     Quantidade de números   |    Valor em R$    |
 | :-------------------------: |:-----------------:|
-| 15 números                  |       2,50        |
-| 16 números                  |       40,00       |
-| 17 números                  |       340,00      |
-| 18 números                  |       2.040,00    |  
+| 15 números                  |       3,50        |
+| 16 números                  |       56,00       |
+| 17 números                  |       476,00      |
+| 18 números                  |       2.856,00    |  
+| 19 números                  |       13.566,00   |  
+| 20 números                  |       54.264,00   |  
 
 # COMO UTILIZAR
 
