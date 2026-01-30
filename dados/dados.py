@@ -1,6 +1,12 @@
 from sklearn.model_selection import train_test_split
 from pandas import ExcelFile, read_excel
-.64.
+from pathlib import Path
+
+BASE_DIR = Path(__name__).resolve().parent  # pasta de scrapping_resultados.py
+outdir = BASE_DIR / 'lotofacil/'
+outdir = outdir / 'base'
+outdir.mkdir(parents=True, exist_ok=True)   # não recria, só garante que exista
+
 def carregar_dados(guia='Importar_Ciclo'):
     """
     Importando os dados da planilha do Excel gerando o dataframe da
