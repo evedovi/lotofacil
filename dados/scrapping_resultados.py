@@ -1,5 +1,10 @@
 import pandas as pd
 import ssl
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent  # pasta de scrapping_resultados.py
+outdir = BASE_DIR / 'base'
+outdir.mkdir(parents=True, exist_ok=True)   # não recria, só garante que exista
 
 def xls_resultados(url):
     """
@@ -19,6 +24,8 @@ def xls_resultados(url):
 URL = "https://servicebus2.caixa.gov.br/portaldeloterias/api/resultados/download?modalidade=Lotof%C3%A1cil"
 
 # Obtém os dados do arquivo XLS
+arquivo = outdir / 'resultados.csv'
+
 base = xls_resultados(URL)
 
 # Remove dados duplicados
@@ -31,9 +38,9 @@ colunas = {'Bola1': 'B1', 'Bola2': 'B2', 'Bola3': 'B3', 'Bola4': 'B4', 'Bola5': 
            'Ganhadores_15_Números': 'Ganhou'}
 
 base.rename(columns=colunas, inplace=True)
-
+base.to_csv(arquivo, sep=';', encoding='utf8', index=False)
 # Exporta os dados em arquivo CSV
-base.to_csv('./base/resultados.csv', sep=';', encoding='utf8', index=False)
+#base.to_csv('./base/resultados.csv', sep=';', encoding='utf8', index=False)
 
 
 if __name__ == '__main__':
