@@ -56,11 +56,13 @@ while probabilidade < prob_alvo and not jogo_aceito:
     y_alvo = y_alvo.reshape(1, 15)
 
     # Faz a predição da Classe/Alvo
-    predicao_alvo = modelo.predict(y_alvo)
+    predicao_alvo = modelo.predict(y_alvo)  # array, ex.: [0] ou [1]
 
-    # Achando a probabilidade
-    predict_proba = modelo.predict(y_alvo)
-    probabilidade = round((predict_proba[0][0] * 100), 1)
+    # Achando a probabilidade (usa predict_proba, não predict)
+    predict_proba = modelo.predict_proba(y_alvo)  # shape (1, n_classes)
+
+    # Se classes forem [0, 1], coluna 1 é probabilidade de "ter chance de ganhar"
+    probabilidade = round(float(predict_proba[0, 1] * 100), 1)
 
     # Verifica se o jogo é possível e se ainda não foi sorteado em algum concurso
     if probabilidade >= prob_alvo:
@@ -89,7 +91,7 @@ while probabilidade < prob_alvo and not jogo_aceito:
 print(f'\nAcuracidade do Modelo: {round((pontuacao * 100), 1)}%')
 
 print('\n0 = Não tem chance de ganhar | 1 = Tem chance de ganhar')
-print(f'Resultado: (Previsão Modelo) = {predicao_alvo[0][0]}')
+print(f'Resultado: (Previsão Modelo) = {predicao_alvo[0]}')
 
 print(f'\nProbabilidade das dezenas sairem: {probabilidade}%')
 

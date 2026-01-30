@@ -1,6 +1,12 @@
 from itertools import combinations
 from csv import writer
 from os import path
+from pathlib import Path
+
+BASE_DIR = Path(__name__).resolve().parent  # pasta de scrapping_resultados.py
+outdir = BASE_DIR / 'lotofacil/'
+outdir = outdir / 'combinacoes/'
+outdir.mkdir(parents=True, exist_ok=True)   # não recria, só garante que exista
 
 
 # Cabeçalho do arquivo
@@ -12,7 +18,7 @@ CABECALHO = ['seq', 'n1', 'n2', 'n3', 'n4', 'n5',
 DEZENAS = [i for i in range(1, 26)]
 
 # Diretório
-DIR = './combinacoes/combinacoes.csv'
+DIR =  outdir / 'combinacoes.csv'
 
 # Quantidade de dezenas
 TM = 15
