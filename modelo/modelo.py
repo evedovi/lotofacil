@@ -35,4 +35,3 @@ def criar_modelo(
     pontuacao = accuracy_score(y_teste, y_pred)
 
     return modelo, pontuacao
-
