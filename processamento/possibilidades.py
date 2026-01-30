@@ -1,8 +1,9 @@
 from pandas import read_csv
 from pathlib import Path
 
-BASE_DIR = 'C:/Users/Vedovi/venv/lotofacil'  # pasta de scrapping_resultados.py
-outdir = BASE_DIR / 'possibilidade'
+BASE_DIR = Path(__name__).resolve().parent  # pasta de scrapping_resultados.py
+outdir = BASE_DIR / 'lotofacil'
+outdir = outdir / 'combinacoes'
 outdir.mkdir(parents=True, exist_ok=True)   # não recria, só garante que exista
 
 ARQUIVO = outdir / 'combinacoes.csv'
