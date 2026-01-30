@@ -1,7 +1,11 @@
 from pandas import read_csv
+BASE_DIR = 'C:/Users/Vedovi/venv/lotofacil'  # pasta de scrapping_resultados.py
+outdir = BASE_DIR / 'base'
+outdir.mkdir(parents=True, exist_ok=True)   # não recria, só garante que exista
 
+URL = outdir / 'resultados.csv'
 
-URL = './base/resultados.csv'
+#URL = './base/resultados.csv'
 DEZENAS = [i for i in range(1, 26)]
 
 

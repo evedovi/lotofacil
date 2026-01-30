@@ -2,7 +2,7 @@ from sklearn.model_selection import train_test_split
 from pandas import ExcelFile, read_excel
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent  # pasta de scrapping_resultados.py
+BASE_DIR = 'C:/Users/Vedovi/venv/lotofacil'  # pasta de scrapping_resultados.py
 outdir = BASE_DIR / 'base'
 outdir.mkdir(parents=True, exist_ok=True)   # não recria, só garante que exista
 
