@@ -1,7 +1,11 @@
 from pandas import read_csv
+from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent  # pasta de scrapping_resultados.py
+outdir = BASE_DIR / 'base'
+outdir.mkdir(parents=True, exist_ok=True)   # não recria, só garante que exista
 
-ARQUIVO = './combinacoes/combinacoes.csv'
+ARQUIVO = outdir / 'combinacoes.csv'
 
 
 def obter_possibilidades(arq=ARQUIVO):
