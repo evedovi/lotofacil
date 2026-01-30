@@ -1,7 +1,10 @@
 from sklearn.model_selection import train_test_split
-
 from pandas import ExcelFile, read_excel
+from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent  # pasta de scrapping_resultados.py
+outdir = BASE_DIR / 'base'
+outdir.mkdir(parents=True, exist_ok=True)   # não recria, só garante que exista
 
 def carregar_dados(guia='Importar_Ciclo'):
     """
@@ -11,7 +14,7 @@ def carregar_dados(guia='Importar_Ciclo'):
     :return: a base de dados.
     """
 
-    caminho = '.base_dados.xlsx'
+    caminho = outdir / 'base_dados.xlsx'
     planilha = ExcelFile(caminho)
     dados = read_excel(planilha, guia)
 
