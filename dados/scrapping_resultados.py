@@ -2,8 +2,10 @@ import pandas as pd
 import ssl
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent  # pasta de scrapping_resultados.py
-outdir = BASE_DIR / 'base'
+
+BASE_DIR = Path(__name__).resolve().parent  # pasta de scrapping_resultados.py
+outdir = BASE_DIR / 'lotofacil/'
+outdir = outdir / 'base'
 outdir.mkdir(parents=True, exist_ok=True)   # não recria, só garante que exista
 
 def xls_resultados(url):
