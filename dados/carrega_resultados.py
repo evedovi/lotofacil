@@ -19,7 +19,7 @@ def baixar_todos_resultados():
     base = pd.read_excel(url_xls)
 
     # 2) pega JSON do último concurso pelo mesmo backend do botão
-    resp = requests.get(URL_API, verify=False)
+    resp = requests.get(URL_API)
     resp.raise_for_status()
     j = resp.json()
 
