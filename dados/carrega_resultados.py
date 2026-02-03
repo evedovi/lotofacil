@@ -46,7 +46,7 @@ def baixar_concurso(numero=None):
         url = URL_API_BASE                  # último concurso
     else:
         url = f"{URL_API_BASE}/{numero}"    # concurso específico
-    resp = requests.get(url, verify=False)
+    resp = requests.get(url)
     resp.raise_for_status()
     return resp.json()
 
