@@ -45,6 +45,15 @@ def baixar_todos_resultados():
         "Ganhadores_15_Números": j["listaRateioPremio"][0]["numeroDeGanhadores"]
     }])
 
+def baixar_concurso(numero=None):
+    if numero is None:
+        url = URL_API_BASE                  # último concurso
+    else:
+        url = f"{URL_API_BASE}/{numero}"    # concurso específico
+    resp = requests.get(url, verify=False)
+    resp.raise_for_status()
+    return resp.json()
+
     # 3) concatena: histórico + último (caso ainda não esteja no XLS)
     base = pd.concat([base, ultimo], ignore_index=True)
 
