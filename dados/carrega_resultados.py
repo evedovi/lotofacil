@@ -3,9 +3,10 @@ import ssl
 from pathlib import Path
 import requests
 
-BASE_DIR = Path(__file__).resolve().parent
-outdir = BASE_DIR / 'lotofacil' / 'base'
-outdir.mkdir(parents=True, exist_ok=True)
+BASE_DIR = Path(__name__).resolve().parent  # pasta de scrapping_resultados.py
+outdir = BASE_DIR / 'lotofacil/'
+outdir = outdir / 'base'
+outdir.mkdir(parents=True, exist_ok=True)   # não recria, só garante que exista
 
 # endpoint “online” usado pelo site (último concurso)
 URL_API = "https://servicebus2.caixa.gov.br/portaldeloterias/api/lotofacil"
