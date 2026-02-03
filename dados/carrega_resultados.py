@@ -19,7 +19,6 @@ def ler_xls_consolidado():
     return base
 
 def montar_df_concurso(json_obj):
-    # monta DataFrame usando MESMOS nomes que existem no XLS
     return pd.DataFrame([{
         "Concurso": json_obj["numero"],
         "Data Sorteio": json_obj["dataApuracao"],
@@ -46,58 +45,40 @@ def baixar_concurso(numero=None):
         url = URL_API_BASE                  # último concurso
     else:
         url = f"{URL_API_BASE}/{numero}"    # concurso específico
-    resp = requests.get(url)
+    resp = requests.get(url, verify=False)
     resp.raise_for_status()
     return resp.json()
 
 def baixar_todos_resultados():
-    # 1) lê XLS consolidado (estrutura “oficial”)
     base = ler_xls_consolidado()
 
-    # guarda a lista de colunas e ordem do XLS
-    colunas_base = list(base.columns)
-
-    # 2) pega último concurso existente no XLS
+    # último concurso do XLS
     ultimo_xls = int(base['Concurso'].max())
 
-    # 3) pega último concurso disponível na API
+    # último concurso disponível na API
     json_ultimo = baixar_concurso()
     ultimo_api = int(json_ultimo["numero"])
 
     dfs_extra = []
 
-    # 4) se faltar algum concurso entre XLS e API, busca um a um
+    # se houver “buraco” maior que 0, preenche concurso por concurso
     if ultimo_api > ultimo_xls:
         for concurso in range(ultimo_xls + 1, ultimo_api + 1):
             j = baixar_concurso(concurso)
-            df_c = montar_df_concurso(j)
-            dfs_extra.append(df_c)
+            dfs_extra.append(montar_df_concurso(j))
 
-    # 5) concatena preservando exatamente as colunas do XLS
     if dfs_extra:
-        df_extra = pd.concat(dfs_extra, ignore_index=True)
+        base = pd.concat([base] + dfs_extra, ignore_index=True)
 
-        # garante mesmas colunas: adiciona colunas faltantes como NaN
-        for c in colunas_base:
-            if c not in df_extra.columns:
-                df_extra[c] = pd.NA
-
-        # mantém apenas as colunas do XLS, na mesma ordem
-        df_extra = df_extra[colunas_base]
-
-        base = pd.concat([base, df_extra], ignore_index=True)
-
-    # 6) remove duplicados (se por acaso o XLS já tiver algum desses concursos)
     base = base.drop_duplicates('Concurso')
 
-    # 7) renomeia colunas para o layout final do CSV
-    colunas_renome = {
+    colunas = {
         'Bola1': 'B1', 'Bola2': 'B2', 'Bola3': 'B3', 'Bola4': 'B4', 'Bola5': 'B5',
         'Bola6': 'B6', 'Bola7': 'B7', 'Bola8': 'B8', 'Bola9': 'B9', 'Bola10': 'B10',
         'Bola11': 'B11', 'Bola12': 'B12', 'Bola13': 'B13', 'Bola14': 'B14', 'Bola15': 'B15',
         'Ganhadores_15_Números': 'Ganhou'
     }
-    base.rename(columns=colunas_renome, inplace=True)
+    base.rename(columns=colunas, inplace=True)
 
     return base
 
