@@ -6,7 +6,7 @@ from pathlib import Path
 BASE_DIR = Path(__name__).resolve().parent  # pasta de scrapping_resultados.py
 outdir = BASE_DIR / 'lotofacil/'
 outdir = outdir / 'combinacoes/'
-outdir.mkdir(parents=True, exist_ok=True)   # não recria, só garante que exista
+#outdir.mkdir(parents=True, exist_ok=True)   # não recria, só garante que exista
 
 
 # Cabeçalho do arquivo
