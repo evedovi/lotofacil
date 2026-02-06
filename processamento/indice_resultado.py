@@ -36,7 +36,7 @@ def dados_indice(atualizar_base_resultados=False):
 	
 	resultado_concurso = read_csv(ARQUIVO,
 								  sep=';',
-								  encoding='utf-8')
+								  encoding='latin1')
 
 	num_sorteados = resultado_concurso.iloc[:, 2:17]
 	num_ordenados = num_sorteados.values
