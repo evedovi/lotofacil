@@ -3,6 +3,7 @@ from processamento.resultados import resultados_ordenados
 from processamento.reajustar_dados import obter_indices
 
 from pandas import read_csv
+from pathlib import Path
 
 BASE_DIR = Path(__name__).resolve().parent  # pasta de scrapping_resultados.py
 outdir = BASE_DIR / 'lotofacil/'
