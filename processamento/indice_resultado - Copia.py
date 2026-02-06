@@ -5,9 +5,9 @@ from processamento.reajustar_dados import obter_indices
 from pandas import read_csv
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parents[1]  # sobe 1 nível a partir de processamento/
-BASE_DIR = BASE_DIR  # c:\Users\Vedovi\lotofacil\lotofacil
-outdir = BASE_DIR  / 'base/'
+BASE_DIR = Path(__name__).resolve().parent  # pasta de scrapping_resultados.py
+outdir = BASE_DIR / 'lotofacil/'
+outdir = outdir / 'base/'
 #outdir.mkdir(parents=True, exist_ok=True)  # não recria, só garante que exista
 
 ARQUIVO = outdir / 'resultados.csv'
