@@ -6,7 +6,6 @@ from sorteios.sortear import sortear_numeros
 from modelo.modelo import criar_modelo
 from dados.dados import carregar_dados
 from pandas import DataFrame
-import pandas as pd  # <<< acrescentado
 
 
 # Carrega a base de dados
@@ -27,9 +26,6 @@ peso, numero_pesos = calcular_numero_pesos(dados)
 # Obtém o modelo e sua acuracidade
 modelo, pontuacao = criar_modelo(dados)
 
-# Lista para guardar o log de cada tentativa <<< acrescentado
-log_tentativas = []
-
 # Carrega e reajusta os demais dados
 print()
 print(f'\033[1;33m[Carregando e reajustando os demais dados...]\033[m')
@@ -38,9 +34,9 @@ print()
 possibilidades = obter_possibilidades()
 resultado_concursos = resultados_ordenados(dados)
 possibilidades_atualizada = remover_resultado_concursos(
-    possibilidades,
-    resultado_concursos
-)
+                                                        possibilidades, 
+                                                        resultado_concursos
+                                                        )
 
 # Variável de verificação se o jogo gerado é aceitável
 jogo_aceito = False
@@ -80,28 +76,16 @@ while probabilidade < prob_alvo and not jogo_aceito:
     # Formata a sequência de números sorteados para ser imprimida na tela
     sequencia = [str(numero[0]).zfill(2) for numero in sorteados]
 
-    # Imprime as informações obtidas no ciclo atual de execução
-    print(
-        f'Alvo = ({prob_alvo}%) - ACURAC.: {round((pontuacao * 100), 1)}% - '
-        f'Rep.: {str(procurando).zfill(7)}'
-        f' - Prob. Enc.: ({str(probabilidade).zfill(2)}%) Sequência: [ ',
-        end=''
-    )
-    print(*sequencia, ']')
+    # Imprime as informações obtidas no ciclo atual de execução enquanto a probabilidade desejada não foi encontrada
+    print(f'Alvo = ({prob_alvo}%) - ACURAC.: {round((pontuacao * 100), 1)}% - Rep.: {str(procurando).zfill(7)}'
+          f' - Prob. Enc.: ({str(probabilidade).zfill(2)}%) Sequência: [ ', end='')
 
-    # <<< guarda esta tentativa no log para exportar depois
-    log_tentativas.append({
-        "repeticao": procurando,
-        "prob_alvo": prob_alvo,
-        "acuracia_modelo": round((pontuacao * 100), 1),
-        "prob_encontrada": probabilidade,
-        "sequencia": " ".join(sequencia),
-        "jogo_aceito": bool(jogo_aceito[0]) if isinstance(jogo_aceito, list) else bool(jogo_aceito)
-    })
+    print(*sequencia, ']')
 
     # Se o jogo não é aceitável, zera a probabilidade para gerar novo jogo
     if not jogo_aceito:
         probabilidade = 0.0
+
 
 # Resultados
 print(f'\nAcuracidade do Modelo: {round((pontuacao * 100), 1)}%')
@@ -112,23 +96,5 @@ print(f'Resultado: (Previsão Modelo) = {predicao_alvo[0]}')
 print(f'\nProbabilidade das dezenas sairem: {probabilidade}%')
 
 # Números sorteados (em ordem de sorteio e em ordem crescente)
-print(f'\nNúmeros sorteados:  { [numeros[0] for numeros in sorteados] }')
-print(f'\nNúmeros ordenados:  { jogo }')
-
-# <<< salva o log em CSV (uma linha por repetição)
-from pathlib import Path  # coloque junto dos imports, se ainda não tiver
-
-# ...
-
-if log_tentativas:
-    df_log = pd.DataFrame(log_tentativas)
-
-    # pasta jogos na raiz do projeto
-    base_dir = Path(__file__).resolve().parent  # pasta do jogar.py
-    jogos_dir = base_dir / "jogos"
-    jogos_dir.mkdir(exist_ok=True)
-
-    caminho_csv = jogos_dir / "log_tentativas_jogar.csv"
-    df_log.to_csv(caminho_csv, index=False, sep=";")
-
-    print(f'\nLog de tentativas salvo em "{caminho_csv}".')
+print(f'\nNúmeros sorteados:  {[numeros[0] for numeros in sorteados]}')
+print(f'\nNúmeros ordenados:  {jogo}')

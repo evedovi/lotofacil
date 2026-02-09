@@ -1,31 +1,26 @@
 from dados.dados import dividir_dados
-from sklearn.neural_network import MLPClassifier
+from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.metrics import accuracy_score
 
 
 def criar_modelo(
         base_dados,
-        primeira_camada=30,
-        segunda_camada=15,
-        terceira_camada=15,
-        saida=1,
-        periodo=50,
-        lote=15
+        max_depth=None,
+        n_estimators=200,
+        learning_rate=0.1,
+        min_samples_leaf=20
     ):
     """
-    Cria um modelo de rede neural (MLP) com até três camadas escondidas.
+    Cria um modelo de gradient boosting otimizado para dados tabulares.
     """
 
     x_treino, x_teste, y_treino, y_teste, atributos = dividir_dados(base_dados)
 
-    hidden = (primeira_camada, segunda_camada, terceira_camada)
-
-    modelo = MLPClassifier(
-        hidden_layer_sizes=hidden,
-        activation="relu",
-        max_iter=periodo,      # similar a epochs
-        batch_size=lote,
-        solver="adam",
+    modelo = HistGradientBoostingClassifier(
+        max_depth=max_depth,
+        max_iter=n_estimators,   # nº de árvores
+        learning_rate=learning_rate,
+        min_samples_leaf=min_samples_leaf,
         random_state=42
     )
 
