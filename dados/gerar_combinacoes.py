@@ -3,11 +3,14 @@ from csv import writer
 from os import path
 from pathlib import Path
 
-BASE_DIR = Path(__name__).resolve().parent  # pasta de scrapping_resultados.py
-outdir = BASE_DIR / 'lotofacil/'
-outdir = outdir / 'combinacoes/'
+#BASE_DIR = Path(__name__).resolve().parent  # pasta de scrapping_resultados.py
+#o#utdir = BASE_DIR / 'lotofacil/'
+#outdir = outdir / 'combinacoes/'
 #outdir.mkdir(parents=True, exist_ok=True)   # não recria, só garante que exista
 
+BASE_DIR = Path(__file__).resolve().parents[1]  # sobe 1 nível a partir de processamento/
+BASE_DIR = BASE_DIR  # c:\Users\Vedovi\lotofacil\lotofacil
+outdir = BASE_DIR  / 'combinacoes/'
 
 # Cabeçalho do arquivo
 CABECALHO = ['seq', 'n1', 'n2', 'n3', 'n4', 'n5',
