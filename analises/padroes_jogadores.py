@@ -9,6 +9,7 @@ def frequencia_dezenas(apostas_df: pd.DataFrame) -> pd.Series:
     return pd.Series(cont).sort_index()
 
 
+
 def dezenas_para_one_hot(df):
     matriz = np.zeros((len(df), 25), dtype=int)
     for i, dezenas in enumerate(df["Dezenas"]):
