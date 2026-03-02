@@ -8,7 +8,7 @@ from pathlib import Path
 #outdir.mkdir(parents=True, exist_ok=True)   # não recria, só garante que exista
 BASE_DIR = Path(__file__).resolve().parents[1]  # sobe 1 nível a partir de processamento/
 BASE_DIR = BASE_DIR  # c:\Users\Vedovi\lotofacil\lotofacil
-outdir = BASE_DIR  / 'base/'
+outdir = BASE_DIR  / 'base/'                                    
 
 def carregar_dados(guia='Importar_Ciclo'):
     """
